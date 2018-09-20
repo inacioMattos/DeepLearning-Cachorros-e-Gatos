@@ -4,7 +4,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "key": "ctrl+alt+2",
             "label": "py2",
             "type": "shell",
             "command": "python",
@@ -21,7 +20,6 @@
             ]
         },
         {
-            "key": "ctrl+alt+3",
             "label": "py3",
             "type": "shell",
             "command": "python",
