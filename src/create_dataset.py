@@ -11,7 +11,7 @@ def main():
 	dataset = create_training_data()
 	print (len(dataset))
 
-	X, y = normalizeData(dataset)
+	X, y = complete_data(dataset)
 	saveData(X, y)
 
 
@@ -21,16 +21,18 @@ def showImage(img):
 
 
 def saveData(X, y):
-	pickle_out = open("X.pickle", "wb")
+	pickle_out = open(os.path.join(DATADIR, "X.pickle"), "wb")
 	pickle.dump(X, pickle_out)
 	pickle_out.close()
 
-	pickle_out = open("y.pickle", "wb")
+	pickle_out = open(os.path.join(DATADIR, "y.pickle"), "wb")
 	pickle.dump(y, pickle_out)
 	pickle_out.close()
 
 
-def normalizeData(data):
+def complete_data(data):
+	random.shuffle(data) # para que não fica em uma ordem previsivel para a AI
+
 	X = []
 	y = []
 
