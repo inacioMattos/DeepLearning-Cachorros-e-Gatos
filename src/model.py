@@ -6,9 +6,13 @@ import pickle, os, time
 
 
 DATADIR="data/"
-NAME="cachorros-gatos-cnn-64x3-{}".format(int(time.time()))
+NAME="cachorros-gatos-cnn-128-128-128-{}".format(int(time.time()))
 
 tensorboard = TensorBoard(log_dir="logs/{}".format(NAME))
+
+
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.4)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 
 
 def getData():
@@ -23,7 +27,7 @@ def normalizeData(X):
 
 
 def saveModel(model):
-	model.save("64*2x3-CNN.model")
+	model.save("128-128-128-CNN-noDense.model")
 
 
 def trainModel(model, training_set):
@@ -37,7 +41,7 @@ def trainModel(model, training_set):
 def createModel(X):
 	model = Sequential()
 
-	model.add(Conv2D(64, (3,3), input_shape=X.shape[1:]))
+	model.add(Conv2D(128, (3,3), input_shape=X.shape[1:]))
 	model.add(Activation("relu"))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
 
@@ -45,7 +49,7 @@ def createModel(X):
 	model.add(Activation("relu"))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
 	
-	model.add(Conv2D(256, (3,3)))
+	model.add(Conv2D(128, (4,4)))
 	model.add(Activation("relu"))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
 	
