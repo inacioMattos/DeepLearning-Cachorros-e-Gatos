@@ -6,6 +6,7 @@ CATEGORIES = ["Cachorro", "Gato"]
 
 modelPath = r'S:\Machine-Learning\DeepLearning-Cachorros-e-Gatos\models\128-128-128-CNN-noDense.model'
 TESTDIR = r"S:\Machine-Learning\DeepLearning-Cachorros-e-Gatos\tests\02"
+file = r"S:\Machine-Learning\DeepLearning-Cachorros-e-Gatos\tests\02\5804b25e64d211e18bb812313804a181_7.png"
 
 
 gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.2)
@@ -13,10 +14,24 @@ sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 
 
 
-
 def main():
 	model = getModel(modelPath)
-	test(model)
+	print (predict(model, file, debug=True))
+	
+	if (file == ""):
+		test(model)
+
+
+def predict(model, img_path, debug=False):
+	img = prepare_image(img_path)
+
+	predict = model.predict([img])
+	label = int(predict[0][0])
+
+	if (debug):
+		print (CATEGORIES[label])
+		showImage(img_path)
+	return (CATEGORIES[label])
 
 
 def test(model):
@@ -24,18 +39,14 @@ def test(model):
 	cat = 0
 	for images in os.listdir(TESTDIR):
 		try:
-			img = prepare_image(os.path.join(TESTDIR, images))
-			
-			predict = model.predict([img])
-			label = int(predict[0][0])
-			print (CATEGORIES[label])
+			label = predict(model, os.path.join(TESTDIR, images))
 
-			if (label == 0):
+			if (label.lower() == "cachorro"):
 				dog += 1
 			else:
 				cat += 1
 
-			#showImage(os.path.join(TESTDIR, images))
+			showImage(os.path.join(TESTDIR, images))
 		except:
 			pass
 	

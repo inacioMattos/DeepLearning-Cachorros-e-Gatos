@@ -2,3 +2,5 @@ data/
 *.pickle
 logs/
 tests/
+models/
+node_modules/

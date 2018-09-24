@@ -48,11 +48,11 @@ def createModel(X):
 	model.add(Conv2D(128, (4,4)))
 	model.add(Activation("relu"))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
-	
-	model.add(Conv2D(128, (4,4)))
+
+	model.add(Conv2D(128, (3,3)))
 	model.add(Activation("relu"))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
-	
+
 	model.add(Flatten())
 
 	model.add(Dense(1))
@@ -66,7 +66,7 @@ def main():
 	X = normalizeData(X)
 	model = createModel(X)
 	model = trainModel(model, (X, y))
-	saveModel(model)
+	#saveModel(model)
 
 
 
