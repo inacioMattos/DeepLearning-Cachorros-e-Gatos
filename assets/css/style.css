@@ -1,0 +1,66 @@
+@font-face
+{
+	font-family: Roboto;
+	src: url(../../assets/fonts/Roboto-Regular.ttf);
+}
+
+@font-face
+{
+	font-family: RobotoThin;
+	src: url(../../assets/fonts/Roboto-Thin.ttf);
+}
+
+body
+{
+	background-color: #fafafa;
+	margin: 0px;
+	padding: 0px;
+	margin-top: -19px;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1, p
+{
+	margin: 20px;
+	color: #212121;
+	font-family: 'Roboto';
+}
+
+.titlebar
+{
+	-webkit-app-region: drag;
+	background-color: #011640;
+	margin: 0px;
+}
+
+.titlebar-btns
+{
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+}
+
+.titlebar-btn
+{
+	-webkit-app-region: no-drag;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	margin: 8px;
+	margin-right: 2px;
+	float: left;
+	border-radius: 50% 50%;
+	text-align: center;
+	color: #212121;
+}
+
+#close
+{
+	background-color: #E83338;
+}
+
+#minimize
+{
+	background-color: #FFD418;
+}
