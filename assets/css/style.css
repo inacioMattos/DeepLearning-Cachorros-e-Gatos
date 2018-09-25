@@ -45,14 +45,16 @@ h1, p
 {
 	-webkit-app-region: no-drag;
 	cursor: pointer;
-	width: 20px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	margin: 8px;
 	margin-right: 2px;
 	float: left;
 	border-radius: 50% 50%;
 	text-align: center;
 	color: #212121;
+	border: 1px solid #212121;
+	transition: all 0.45s;
 }
 
 #close
