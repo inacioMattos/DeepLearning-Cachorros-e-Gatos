@@ -3,27 +3,160 @@
 	font-family: Roboto;
 	src: url(../../assets/fonts/Roboto-Regular.ttf);
 }
-
 @font-face
 {
 	font-family: RobotoThin;
 	src: url(../../assets/fonts/Roboto-Thin.ttf);
 }
 
+
+@font-face
+{
+	font-family: OpenSansBold;
+	src: url(../../assets/fonts/OpenSans-Bold.ttf);
+}
+@font-face
+{
+	font-family: OpenSansThin;
+	src: url(../../assets/fonts/OpenSans-Light.ttf);
+}
+@font-face
+{
+	font-family: OpenSans;
+	src: url(../../assets/fonts/OpenSans-Regular.ttf);
+}
+@font-face
+{
+	font-family: OpenSansSemiBold;
+	src: url(../../assets/fonts/OpenSans-SemiBold.ttf);
+}
+
 body
 {
-	background-color: #fafafa;
+	/*background: linear-gradient(to bottom right, #5C6BC0, rgb(64, 78, 158));*/
+	background-color: #5C6BC0;
 	margin: 0px;
 	padding: 0px;
 	margin-top: -19px;
 	font-family: 'Roboto', sans-serif;
+	text-align: center;
 }
 
-h1, p
+.title
+{
+	margin: 40px;
+	color: #fafafa;
+	font-family: 'OpenSansBold';
+	text-transform: uppercase;
+	font-size: 64px;
+}
+
+.output
+{
+	border: 3px solid #fafafa;
+	margin: 0px 100px 50px 100px;
+}
+
+.enfeite
+{
+	text-transform: uppercase;
+	font-family: 'OpenSansBold';
+	color: #fafafa;
+	background-color: #5C6BC0;
+	padding: 10px 35px 10px 20px;
+	position: relative;
+	top: -15px;
+	left: -26vw;
+	
+}
+
+p
 {
 	margin: 20px;
-	color: #212121;
-	font-family: 'Roboto';
+	color: #fafafa;
+	font-family: 'OpenSans';
+}
+
+.inputs
+{
+	margin: 20vh 100px 10vh 100px;
+}
+
+.button {
+	border-radius: 4px;
+	background-color: rgb(43, 65, 185);
+	border: none;
+	border-bottom: 4px solid rgb(43, 65, 185);
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 20px;
+	padding: 17px;
+	top: 100px;
+	width: 150px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin-left: 10px;
+	
+  }
+  
+  .button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	font-family: 'OpenSansSemiBold';
+	text-transform: uppercase;
+	transition: 0.5s;
+  }
+  
+  .button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+  }
+
+  .button:hover
+  {
+	border-bottom: 4px solid rgb(3, 187, 3);
+  }
+  
+  .button:hover span {
+	padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+	opacity: 1;
+	right: 0;
+  }
+
+.txt
+{
+	font-family: 'OpenSansThin';
+	margin-top: -100px;
+	width: 50vw;
+	height: 60px;
+	padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: none;
+	border-bottom: 4px solid rgb(43, 65, 185);
+	border-radius: 6px 6px 0px 0px;
+    background: rgb(56, 63, 104);
+	color: #fafafa;
+	transition: all 0.5s;
+}
+
+::placeholder
+{
+	color: #fafafa;
+}
+
+.txt:focus
+{
+	outline: none;
+	border-bottom: 4px solid rgb(3, 187, 3);
 }
 
 .titlebar
@@ -66,3 +199,11 @@ h1, p
 {
 	background-color: #FFD418;
 }
+
+
+
+
+
+
+
+
