@@ -9,7 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "zerorpc": "fyears/zerorpc-node"
+  },
   "devDependencies": {
-    "electron": "3.0.0"
+    "electron": "^1.4.1",
+    "electron-packager": "^8.5.1"
   }
 }

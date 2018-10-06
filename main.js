@@ -9,7 +9,11 @@ const { app, BrowserWindow, Menu } = require('electron')
     win = new BrowserWindow({ width: 800, height: 600, frame: false, opacity: 1, resizable: false })
   
     // and load the index.html of the app.
-    win.loadFile('src/frontend/index.html')
+    win.loadURL(require('url').format({
+      pathname: path.join(__dirname, 'src', 'frontend', 'index.html'),
+      protocol: 'file:',
+      slashes: true
+    }));
   
     // Open the DevTools.
 	  //win.webContents.openDevTools()
@@ -49,3 +53,35 @@ const { app, BrowserWindow, Menu } = require('electron')
   
   // In this file you can include the rest of your app's specific main process
   // code. You can also put them in separate files and require them here.
+
+
+
+//
+// INICIO PARTE NECESSARIO PARA COMUNICAÇÃO ENTRE PYTHON E ELECTRON
+//
+const path = require('path')
+let pyProc = null
+let pyPort = null
+
+const selectPort = () => {
+  pyPort = 8080
+  return pyPort
+}
+
+const createPyProc = () => {
+  let port = '' + selectPort()
+  let script = path.join(__dirname, 'src', 'backend', 'echo.py')
+  pyProc = require('child_process').spawn('python', [script, port])
+  if (pyProc != null) {
+    console.log('child process success')
+  }
+}
+
+const exitPyProc = () => {
+  pyProc.kill()
+  pyProc = null
+  pyPort = null
+}
+
+app.on('ready', createPyProc)
+app.on('will-quit', exitPyProc)
